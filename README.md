@@ -42,6 +42,20 @@ python pycharm_run_timer.py
 - Windows
 - Python 3（仅使用标准库，无需安装任何第三方包）
 
+## 常见问题
+
+**双击 `start_timer.bat` 后只看到「请按任意键继续」/ 窗口一闪而过？**
+
+说明电脑上没有可用的 Python（未安装，或未加入 PATH，或 Microsoft Store 的 python 别名未真正安装）。请：
+
+1. 到 https://www.python.org/downloads/ 下载安装 Python 3；
+2. 安装时**务必勾选 "Add python.exe to PATH"**；
+3. 重新双击 `start_timer.bat`。
+
+**运行后窗口一直显示监控中、没有反应？**
+
+这是正常的——说明当前没有检测到 PyCharm 在运行。请先在 PyCharm 里运行你的代码，代码运行结束时计时器会自动开始 60 秒倒计时并响铃。
+
 ## 许可证
 
 [MIT](LICENSE)
