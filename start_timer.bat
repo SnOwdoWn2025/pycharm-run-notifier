@@ -4,16 +4,12 @@ rem  PyCharm Run-End Notifier launcher
 rem ============================================
 set "PYCMD="
 python --version >nul 2>nul
-if %errorlevel%==0 set "PYCMD=python"
-if not defined PYCMD (
-    py --version >nul 2>nul
-    if %errorlevel%==0 set "PYCMD=py"
-)
-if not defined PYCMD goto :nopython
-%PYCMD% "%~dp0pycharm_run_timer.py"
-goto :end
+if not errorlevel 1 set "PYCMD=python"
+if defined PYCMD goto :found
+py --version >nul 2>nul
+if not errorlevel 1 set "PYCMD=py"
+if defined PYCMD goto :found
 
-:nopython
 echo [ERROR] Python 3 was not found or is not working.
 echo.
 echo Please install Python 3 from:  https://www.python.org/downloads/
@@ -27,6 +23,12 @@ echo install Python from python.org.
 echo.
 pause
 exit /b 1
+
+:found
+echo Using: %PYCMD%
+%PYCMD% --version
+%PYCMD% "%~dp0pycharm_run_timer.py"
+goto :end
 
 :end
 pause
